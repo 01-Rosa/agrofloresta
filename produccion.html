@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Producción - Agrofloresta</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+
+  <style>
+    .sidebar{
+      transition: all 0.3s ease;
+    }
+  </style>
+
+</head>
+<body>
+
+<!-- Navbar móvil -->
+<nav class="navbar navbar-dark bg-success d-md-none">
+  <div class="container-fluid">
+
+    <button class="navbar-toggler" type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#sidebarMenu">
+
+      <span class="navbar-toggler-icon"></span>
+
+    </button>
+
+    <span class="navbar-brand mb-0 h1">AGROFLORESTA</span>
+
+  </div>
+</nav>
+
+<div class="container-fluid">
+<div class="row">
+
+<!-- SIDEBAR -->
+<nav id="sidebarMenu" class="collapse d-md-block col-md-3 col-lg-2 bg-light sidebar vh-100 p-3">
+
+<ul class="nav flex-column">
+
+<!-- Menú -->
+<li class="nav-item mb-2">
+<a class="nav-link" href="dasbooar.html">
+🏠 Dashboard</a>
+</li>
+
+<!-- ADMINISTRATIVO -->
+<li class="nav-item mb-2">
+<a class="nav-link d-flex justify-content-between align-items-center"
+data-bs-toggle="collapse"
+href="#menuAdmin">
+<span><i class="bi bi-gear"></i> Administrativo</span>
+<i class="bi bi-chevron-down"></i>
+</a>
+
+<ul class="collapse list-unstyled ps-3" id="menuAdmin">
+
+<li class="nav-item mb-2">
+<a class="nav-link" href="#">
+<i class="bi bi-person"></i> Usuarios
+</a>
+</li>
+
+<li class="nav-item mb-2">
+<a class="nav-link" href="#">
+<i class="bi bi-cash"></i> Finanzas
+</a>
+</li>
+
+<li class="nav-item mb-2">
+<a class="nav-link" href="#">
+<i class="bi bi-box"></i> Inventario
+</a>
+</li>
+
+</ul>
+
+</li>
+
+
+<!-- PRODUCCIÓN -->
+<li class="nav-item mb-2">
+
+<a class="nav-link d-flex justify-content-between align-items-center"
+data-bs-toggle="collapse"
+href="#menuProduccion">
+
+<span><i class="bi bi-tree"></i> Producción</span>
+<i class="bi bi-chevron-down"></i>
+
+</a>
+
+<ul class="collapse list-unstyled ps-3" id="menuProduccion">
+
+<li class="nav-item mb-2">
+<a class="nav-link" href="productores.html">
+<i class="bi bi-people"></i> Productores
+</a>
+</li>
+
+<li class="nav-item mb-2">
+<a class="nav-link active" href="producción.html">
+<i class="bi bi-flower1"></i> Producción
+</a>
+</li>
+
+<li class="nav-item mb-2">
+<a class="nav-link" href="parcelas.html">
+<i class="bi bi-bar-chart"></i> Parcelas
+</a>
+</li>
+
+<li class="nav-item mb-2">
+<a class="nav-link" href="reportes.html">
+<i class="bi bi-bar-chart"></i> Reportes
+</a>
+</li>
+
+</ul>
+
+</li>
+
+
+<!-- CERRAR SESIÓN -->
+<li class="nav-item mt-3">
+<a class="nav-link text-danger" href="index.html">
+<i class="bi bi-box-arrow-right"></i> Cerrar Sesión
+</a>
+</li>
+
+</ul>
+
+</nav>
+
+    <!-- Contenido principal -->
+    <main class="col-md-9 col-lg-10 px-4 py-4">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2> Registro de Producción</h2>
+        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#nuevoRegistroModal">
+          + Nueva Producción
+        </button>
+      </div>
+      <p class="text-muted">Gestiona las cosechas y producción de cacao</p>
+
+      <!-- Estadísticas -->
+        
+      <div class="row text-center mb-4">
+        <div class="col-md-4 mb-3">
+          <div class="card p-3 shadow-sm">
+            <h3 id="totalRegistros">0</h3>
+            <p>Registros</p>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <div class="card p-3 shadow-sm">
+            <h3 class="text-success"><span id="totalProducido">0.00</span> <small>kg</small></h3>
+            <p>Total Producido</p>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <div class="card p-3 shadow-sm">
+            <h3 class="text-success">$<span id="ingresosTotales">0.00</span></h3>
+            <p>Ingresos Totales</p>
+          </div>
+        </div>
+      </div>  
+
+      <!-- Filtros -->
+        <!--
+      <div class="card p-3 mb-4">
+        <h5><i class="bi bi-funnel"></i> Filtros</h5>
+        <div class="row g-3">
+          <div class="col-md-8">
+            <input type="search" class="form-control" placeholder="Buscar por parcela, productor o fecha..." />
+          </div>
+          <div class="col-md-4">
+            <select class="form-select">
+              <option selected>Todas las calidades</option>
+              <option>Calidad A</option>
+              <option>Calidad B</option>
+              <option>Calidad C</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      -->
+       
+
+      <!-- Historial -->
+       <div class="bg-white shadow-sm rounded p-3">
+        <h4>Historial de Producción</h4>
+        <p>Lista de todas las cosechas registradas</p>
+
+        <div class="table-responsive">
+          <table class="table table-striped align-middle" id="tablaProduccion">
+            <thead>
+              <tr>
+                <th>Fecha</th>
+                <th>Parcela</th>
+                <th>Productor</th>
+                <th>Cantidad (kg)</th>
+                <th>Calidad</th>
+                <th>Humedad (%)</th>
+                <th>Precio/kg</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+</div> 
+
+<!-- Modal -->
+<div class="modal fade" id="nuevoRegistroModal" tabindex="-1">
+  <div class="modal-dialog">
+    <form class="modal-content" id="formNuevoRegistro">
+      <div class="modal-header">
+        <h5 class="modal-title">Registrar Nueva Producción</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+
+        <div class="mb-3">
+          <label class="form-label">Fecha</label>
+          <input type="date" id="fecha" class="form-control" required />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Parcela</label>
+          <input type="text" id="parcela" class="form-control" required />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Productor</label>
+          <input type="text" id="productor" class="form-control" required />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Cantidad (kg)</label>
+          <input type="number" id="cantidad" class="form-control" min="0" step="0.1" required />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Calidad</label>
+          <select id="calidad" class="form-select" required>
+            <option value="" disabled selected>Seleccione calidad</option>
+            <option value="A">Calidad A</option>
+            <option value="B">Calidad B</option>
+            <option value="C">Calidad C</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Humedad (%)</label>
+          <input type="number" id="humedad" class="form-control" min="0" max="100" step="0.1" required />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Precio por kg</label>
+          <input type="number" id="precio" class="form-control" min="0" step="0.01" required />
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-success">Registrar Producción</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  let totalRegistros = 0;
+  let totalProducido = 0;
+  let ingresosTotales = 0;
+
+  const formNuevoRegistro = document.getElementById('formNuevoRegistro');
+  const tablaProduccion = document.getElementById('tablaProduccion').querySelector('tbody');
+
+  const totalRegistrosElem = document.getElementById('totalRegistros');
+  const totalProducidoElem = document.getElementById('totalProducido');
+  const ingresosTotalesElem = document.getElementById('ingresosTotales');
+
+  formNuevoRegistro.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const fecha = document.getElementById('fecha').value;
+    const parcela = document.getElementById('parcela').value.trim();
+    const productor = document.getElementById('productor').value.trim();
+    const cantidad = parseFloat(document.getElementById('cantidad').value);
+    const calidad = document.getElementById('calidad').value;
+    const humedad = parseFloat(document.getElementById('humedad').value);
+    const precio = parseFloat(document.getElementById('precio').value);
+
+    if (!fecha || !parcela || !productor || isNaN(cantidad) || !calidad || isNaN(humedad) || isNaN(precio)) {
+      alert('Por favor complete todos los campos correctamente.');
+      return;
+    }
+
+    const nuevaFila = tablaProduccion.insertRow();
+    nuevaFila.insertCell().textContent = fecha;
+    nuevaFila.insertCell().textContent = parcela;
+    nuevaFila.insertCell().textContent = productor;
+    nuevaFila.insertCell().textContent = cantidad.toFixed(2);
+    nuevaFila.insertCell().textContent = calidad;
+    nuevaFila.insertCell().textContent = humedad.toFixed(2);
+    nuevaFila.insertCell().textContent = `$${precio.toFixed(2)}`;
+
+    totalRegistros++;
+    totalProducido += cantidad;
+    ingresosTotales += cantidad * precio;
+
+    totalRegistrosElem.textContent = totalRegistros;
+    totalProducidoElem.textContent = totalProducido.toFixed(2);
+    ingresosTotalesElem.textContent = ingresosTotales.toFixed(2);
+
+    formNuevoRegistro.reset();
+    const modal = bootstrap.Modal.getInstance(document.getElementById('nuevoRegistroModal'));
+    modal.hide();
+  });
+</script>
+
+</body>
+</html>

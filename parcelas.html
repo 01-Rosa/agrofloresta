@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Parcelas - Agrofloresta</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+</head>
+
+<body>
+
+<!-- Navbar móvil -->
+<nav class="navbar navbar-dark bg-success d-md-none">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#sidebarMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <span class="navbar-brand mb-0 h1">AGROFLORESTA</span>
+  </div>
+</nav>
+
+<div class="container-fluid">
+<div class="row">
+
+<!-- SIDEBAR -->
+<nav id="sidebarMenu" class="collapse d-md-block col-md-3 col-lg-2 bg-light vh-100 p-3">
+
+<ul class="nav flex-column">
+
+<li class="nav-item mb-2">
+<a class="nav-link" href="dasbooar.html">🏠 Dashboard</a>
+</li>
+
+<!-- ADMIN -->
+<li class="nav-item mb-2">
+<a class="nav-link d-flex justify-content-between align-items-center"
+data-bs-toggle="collapse" href="#menuAdmin">
+<span><i class="bi bi-gear"></i> Administrativo</span>
+<i class="bi bi-chevron-down"></i>
+</a>
+
+<ul class="collapse list-unstyled ps-3" id="menuAdmin">
+<li class="nav-item mb-2"><a class="nav-link" href="#">Usuarios</a></li>
+<li class="nav-item mb-2"><a class="nav-link" href="#">Finanzas</a></li>
+<li class="nav-item mb-2"><a class="nav-link" href="#">Inventario</a></li>
+</ul>
+</li>
+
+<!-- PRODUCCIÓN -->
+<li class="nav-item mb-2">
+<a class="nav-link d-flex justify-content-between align-items-center"
+data-bs-toggle="collapse" href="#menuProduccion">
+<span><i class="bi bi-tree"></i> Producción</span>
+<i class="bi bi-chevron-down"></i>
+</a>
+
+<ul class="collapse list-unstyled ps-3" id="menuProduccion">
+<li><a class="nav-link" href="productores.html">Productores</a></li>
+<li><a class="nav-link active" href="produccion.html">Producción</a></li>
+<li><a class="nav-link" href="parcelas.html">Parcelas</a></li>
+<li><a class="nav-link" href="reportes.html">Reportes</a></li>
+</ul>
+</li>
+
+<li class="nav-item mt-3">
+<a class="nav-link text-danger" href="index.html">Cerrar Sesión</a>
+</li>
+
+</ul>
+</nav>
+
+<!-- CONTENIDO -->
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h2>Registro de Parcelas</h2>
+  <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#nuevaParcelaModal">
+    + Nueva Parcela
+  </button>
+</div>
+
+<p class="text-muted">Gestiona los registros de las parcelas</p>
+
+<!-- CARDS -->
+<div class="row text-center mb-4">
+
+  <div class="col-md-4 mb-3">
+    <div class="card p-3 shadow-sm">
+      <h3 class="text-success"><span id="totalRegistros">0</span></h3>
+      <p>Parcelas Registradas</p>
+    </div>
+  </div>
+
+  <div class="col-md-4 mb-3">
+    <div class="card p-3 shadow-sm">
+      <h3 class="text-success"><span id="totaldehectareas">0.00</span> Kg</h3>
+      <p>Total de hectáreas</p>
+    </div>
+  </div>
+
+  <div class="col-md-4 mb-3">
+    <div class="card p-3 shadow-sm">
+      <h3 class="text-success"><span id="Parcelasactivas">0</span></h3>
+      <p>Parcelas activas</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- Historial -->
+       <div class="bg-white shadow-sm rounded p-3">
+        <h4>Historial de Parcelas</h4>
+        <p>Lista de todas las parcelas registradas</p>
+
+        <div class="table-responsive">
+          <table class="table table-striped align-middle" id="tablaProduccion">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Productor</th>
+                <th>Hectáreas</th>
+                <th>Fecha de siembra</th>
+                <th>Variedad</th>
+                <th>Ubicación</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+</div> 
+
+</main>
+</div>
+</div>
+
+<!-- MODAL -->
+<div class="modal fade" id="nuevaParcelaModal" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Registrar Nueva Parcela</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+
+        <form id="formParcela">
+
+          <div class="mb-3">
+            <label>Nombre de la parcela</label>
+            <input class="form-control" id="nombre_parcela" required>
+          </div>
+
+          <div class="mb-3">
+            <label>Productor</label>
+            <input class="form-control" id="productor" required>
+          </div>
+
+          <div class="mb-3">
+            <label>Hectáreas</label>
+            <input type="number" step="0.01" class="form-control" id="hectareas" required>
+          </div>
+
+          <div class="mb-3">
+            <label>Fecha de siembra</label>
+            <input type="date" class="form-control" id="fecha_siembra" required>
+          </div>
+
+          <div class="mb-3">
+            <label>Variedad de cacao</label>
+            <input class="form-control" id="variedad_cacao" required>
+          </div>
+
+          <div class="mb-3">
+            <label>Ubicación</label>
+            <input class="form-control" id="ubicacion" required>
+          </div>
+
+          <div class="modal-footer">
+            <button class="btn btn-success" type="submit">Registrar</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+
+let parcelas = JSON.parse(localStorage.getItem("parcelas")) || [];
+
+// MOSTRAR DATOS AL CARGAR
+actualizarTabla();
+actualizarCards();
+
+// REGISTRAR PARCELA
+document.getElementById("formParcela")
+.addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    const p = {
+        nombre: document.getElementById("nombre_parcela").value,
+        productor: document.getElementById("productor").value,
+        hectareas: parseFloat(document.getElementById("hectareas").value),
+        fecha: document.getElementById("fecha_siembra").value,
+        variedad: document.getElementById("variedad_cacao").value,
+        ubicacion: document.getElementById("ubicacion").value
+    };
+
+    // AGREGAR
+    parcelas.push(p);
+
+    // GUARDAR EN LOCALSTORAGE
+    localStorage.setItem(
+        "parcelas",
+        JSON.stringify(parcelas)
+    );
+
+    // ACTUALIZAR
+    actualizarTabla();
+    actualizarCards();
+
+    // CERRAR MODAL
+    const modal =
+    bootstrap.Modal.getInstance(
+        document.getElementById('nuevaParcelaModal')
+    );
+
+    modal.hide();
+
+    // LIMPIAR FORM
+    this.reset();
+
+});
+
+// TABLA
+function actualizarTabla(){
+
+    const tbody =
+    document.querySelector("#tablaProduccion tbody");
+
+    tbody.innerHTML = "";
+
+    parcelas.forEach(p => {
+
+        tbody.innerHTML += `
+        <tr>
+            <td>${p.nombre}</td>
+            <td>${p.productor}</td>
+            <td>${p.hectareas}</td>
+            <td>${p.fecha}</td>
+            <td>${p.variedad}</td>
+            <td>${p.ubicacion}</td>
+        </tr>
+        `;
+
+    });
+
+}
+
+// CARDS
+function actualizarCards(){
+
+    document.getElementById("totalRegistros")
+    .textContent = parcelas.length;
+
+    const totalHa =
+    parcelas.reduce((sum, p) =>
+    sum + p.hectareas, 0);
+
+    document.getElementById("totaldehectareas")
+    .textContent = totalHa.toFixed(2);
+
+    document.getElementById("Parcelasactivas")
+    .textContent = parcelas.length;
+
+}
+
+</script>
+
+</body>
+</html>

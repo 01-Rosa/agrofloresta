@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reportes - Agrofloresta</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+
+  <style>
+    .sidebar{
+      transition: all 0.3s ease;
+    }
+  </style>
+
+</head>
+<body>
+
+<!-- Navbar móvil -->
+<nav class="navbar navbar-dark bg-success d-md-none">
+  <div class="container-fluid">
+
+    <button class="navbar-toggler" type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#sidebarMenu">
+
+      <span class="navbar-toggler-icon"></span>
+
+    </button>
+
+    <span class="navbar-brand mb-0 h1">AGROFLORESTA</span>
+
+  </div>
+</nav>
+
+<div class="container-fluid">
+<div class="row">
+
+<!-- SIDEBAR -->
+<nav id="sidebarMenu" class="collapse d-md-block col-md-3 col-lg-2 bg-light sidebar vh-100 p-3">
+
+<ul class="nav flex-column">
+
+<!-- DASHBOARD -->
+<li class="nav-item mb-2">
+<a class="nav-link" href="dasbooar.html">
+🏠 Dashboard</a>
+</li>
+
+
+<!-- ADMINISTRATIVO -->
+<li class="nav-item mb-2">
+
+<a class="nav-link d-flex justify-content-between align-items-center"
+data-bs-toggle="collapse"
+href="#menuAdmin">
+
+<span><i class="bi bi-gear"></i> Administrativo</span>
+<i class="bi bi-chevron-down"></i>
+
+</a>
+
+<ul class="collapse list-unstyled ps-3" id="menuAdmin">
+
+<li class="nav-item mb-2">
+<a class="nav-link" href="#">
+<i class="bi bi-person"></i> Usuarios
+</a>
+</li>
+
+<li class="nav-item mb-2">
+<a class="nav-link" href="#">
+<i class="bi bi-cash"></i> Finanzas
+</a>
+</li>
+
+<li class="nav-item mb-2">
+<a class="nav-link" href="#">
+<i class="bi bi-box"></i> Inventario
+</a>
+</li>
+
+</ul>
+
+
+
+<!-- PRODUCCIÓN -->
+<li class="nav-item mb-2">
+
+<a class="nav-link d-flex justify-content-between align-items-center"
+data-bs-toggle="collapse"
+href="#menuProduccion">
+
+<span><i class="bi bi-tree"></i> Producción</span>
+<i class="bi bi-chevron-down"></i>
+
+</a>
+
+<ul class="collapse list-unstyled ps-3" id="menuProduccion">
+
+<li class="nav-item mb-2">
+<a class="nav-link" href="productores.html">
+<i class="bi bi-people"></i> Productores
+</a>
+</li>
+
+<li class="nav-item mb-2">
+<a class="nav-link active" href="produccion.html">
+<i class="bi bi-flower1"></i> Producción
+</a>
+</li>
+
+<li class="nav-item mb-2">
+<a class="nav-link" href="parcelas.html">
+<i class="bi bi-grid-3x3-gap"></i> Parcelas
+</a>
+</li>
+
+<li class="nav-item mb-2">
+<a class="nav-link" href="reportes.html">
+<i class="bi bi-bar-chart"></i> Reportes
+</a>
+</li>
+
+</ul>
+
+</li>
+
+
+<!-- CERRAR SESIÓN -->
+<li class="nav-item mt-3">
+<a class="nav-link text-danger" href="index.html">
+<i class="bi bi-box-arrow-right"></i> Cerrar Sesión
+</a>
+</li>
+
+</ul>
+
+</nav>
+
+
+<!-- CONTENIDO PRINCIPAL -->
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+
+<h2 class="mt-4">Reportes</h2>
+<p>Aquí irá el contenido de Reportes.</p>
+
+</main>
+
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
